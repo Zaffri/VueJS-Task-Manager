@@ -1,5 +1,10 @@
+Vue.component('modal', {
+  template: '#modal-template'
+});
+
 var app = new Vue({
     el: "#app",
+    lastNewTaskCategory: "",
     data: {
         newCategory: '',
         categories: [
@@ -41,6 +46,18 @@ var app = new Vue({
 
                 this.newCategory = "";
             }
+        },
+        showTaskInput: function(index) {
+            var last = parseInt(this.lastNewTaskCategory);
+
+            // hide last new task box
+            if(last >= 0) {
+                document.getElementById(last).style.display = "none";
+            }
+            // show new task (index = current cat index)
+            document.getElementById(index).style.display = "block";
+            // update last index
+            this.lastNewTaskCategory = index;
         },
         createTask(category) {
             console.log(category);

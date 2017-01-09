@@ -15,10 +15,14 @@
 
         <ul id="category-list">
             <li v-for="(cat, index) in categories" class="category-list-item">
+
                 <h3 class="category-name">{{ cat.name }}</h3>
                 <ul class="task-list">
                     <li class="task-list-item task-new">
-                        <p v-on:click="createTask(index)"><i class="ion-android-add"></i> task</p>
+                        <p v-on:click="showTaskInput(index)"><i class="ion-android-add"></i> task</p>
+                    </li>
+                    <li class="task-list-item">
+                        <input type="text" v-bind:id="index" v-on:keyup.enter="createTask(index)" placeholder="new task..." class="new-task-input" />
                     </li>
                     <li v-for="task in cat.tasks" class="task-list-item">{{ task }}</li>
                 </ul>

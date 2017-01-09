@@ -86,3 +86,8 @@ html {
     text-align: right;
     cursor: pointer;
 }
+
+.new-task-input {
+    width: 100%;
+    display: none;
+}
