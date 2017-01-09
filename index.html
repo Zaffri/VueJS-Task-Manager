@@ -5,7 +5,16 @@
 </head>
 <body>
 
-
+    <section id="app">
+        <ul>
+            <li v-for="cat in categories">
+                {{ cat.name }}
+                <ul>
+                    <li v-for="task in cat.tasks">{{ task }}</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
 
     <script src="js/vue.dev.js"></script>
     <script src="js/app.js"></script>
