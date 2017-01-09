@@ -60,7 +60,11 @@ var app = new Vue({
             this.lastNewTaskCategory = index;
         },
         createTask(category) {
-            console.log(category);
+            var task = document.getElementById(category).value.trim();
+            
+            if(task.length) {
+                this.categories[category].tasks.push(task);
+            }
         }
     }
 });
