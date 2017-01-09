@@ -3,7 +3,6 @@
 <head>
     <title>Task Manager</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
 </head>
 <body>
 
@@ -19,7 +18,7 @@
                 <h3 class="category-name">{{ cat.name }}</h3>
                 <ul class="task-list">
                     <li class="task-list-item task-new">
-                        <p v-on:click="showTaskInput(index)"><i class="ion-android-add"></i> task</p>
+                        <p v-on:click="showTaskInput(index)">add task..</p>
                     </li>
                     <li class="task-list-item">
                         <input type="text" v-bind:id="index" v-on:keyup.enter="createTask(index)" placeholder="new task..." class="new-task-input" />

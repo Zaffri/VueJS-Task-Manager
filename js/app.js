@@ -1,6 +1,10 @@
-Vue.component('modal', {
-  template: '#modal-template'
-});
+/* --------------------------------------------------------
+	VueJS - Task Manager
+	Version: 	0.0.1
+	Author: 	Steven Morrison
+	Website:	www.zaffri.com
+	GitHub:		github.com/Zaffri
+-------------------------------------------------------- */
 
 var app = new Vue({
     el: "#app",
@@ -38,12 +42,13 @@ var app = new Vue({
         createCategory: function() {
             var input = this.newCategory.trim();
 
+            // if not default val, then add new
             if(input.length) {
                 this.categories.push({
                     name: input,
                     tasks: []
                 });
-
+                // reset new cat val
                 this.newCategory = "";
             }
         },
@@ -61,7 +66,7 @@ var app = new Vue({
         },
         createTask(category) {
             var task = document.getElementById(category).value.trim();
-            
+            // add task to category.tasks array
             if(task.length) {
                 this.categories[category].tasks.push(task);
             }
