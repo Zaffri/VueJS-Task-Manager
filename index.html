@@ -2,15 +2,16 @@
 <html>
 <head>
     <title>Task Manager</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
     <section id="app">
-        <ul>
-            <li v-for="cat in categories">
+        <ul id="category-list">
+            <li v-for="cat in categories" class="category-list-item">
                 {{ cat.name }}
-                <ul>
-                    <li v-for="task in cat.tasks">{{ task }}</li>
+                <ul class="task-list">
+                    <li v-for="task in cat.tasks" class="task-list-item">{{ task }}</li>
                 </ul>
             </li>
         </ul>

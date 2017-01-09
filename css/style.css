@@ -1,0 +1,13 @@
+#category-list .category-list-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+}
+
+.task-list{
+    padding: 15px 10px;
+}
+
+.task-list-item {
+    width: 100%;
+}

@@ -18,6 +18,13 @@ var app = new Vue({
                     "Task 3",
                     "Task 4"
                 ]
+            },
+            {
+                name: "Cat3",
+                tasks: [
+                    "Task 1",
+                    "Task 2"
+                ]
             }
         ]
     }
