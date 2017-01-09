@@ -1,6 +1,7 @@
 var app = new Vue({
     el: "#app",
     data: {
+        newCategory: '',
         categories: [
             {
                 name: "Cat1",
@@ -25,26 +26,24 @@ var app = new Vue({
                     "Task 1",
                     "Task 2"
                 ]
-            },
-            {
-                name: "Cat4",
-                tasks: [
-                    "Task 1",
-                    "Task 2",
-                    "Task 3"
-                ]
-            },
-            {
-                name: "Cat5",
-                tasks: [
-                    "Task 1",
-                    "Task 2",
-                    "Task 3",
-                    "Task 4",
-                    "Task 5",
-                    "Task 6"
-                ]
             }
         ]
+    },
+    methods: {
+        createCategory: function() {
+            var input = this.newCategory.trim();
+
+            if(input.length) {
+                this.categories.push({
+                    name: input,
+                    tasks: []
+                });
+
+                this.newCategory = "";
+            }
+        },
+        createTask(category) {
+            console.log(category);
+        }
     }
 });

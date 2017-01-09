@@ -3,19 +3,23 @@
 <head>
     <title>Task Manager</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
 </head>
 <body>
 
     <section id="app">
 
         <div id="new-category-wrapper">
-            <input type="text" id="new-category-input" placeholder="New category" />
+            <input type="text" v-model="newCategory" v-on:keyup.enter="createCategory" id="new-category-input" placeholder="New category" />
         </div>
 
         <ul id="category-list">
-            <li v-for="cat in categories" class="category-list-item">
+            <li v-for="(cat, index) in categories" class="category-list-item">
                 <h3 class="category-name">{{ cat.name }}</h3>
                 <ul class="task-list">
+                    <li class="task-list-item task-new">
+                        <p v-on:click="createTask(index)"><i class="ion-android-add"></i> task</p>
+                    </li>
                     <li v-for="task in cat.tasks" class="task-list-item">{{ task }}</li>
                 </ul>
             </li>

@@ -80,3 +80,9 @@ html {
     list-style: none;
     width: 100%;
 }
+
+.task-new {
+    color: #aaa;
+    text-align: right;
+    cursor: pointer;
+}
