@@ -55,6 +55,27 @@ html {
     padding: 15px 0 15px 0;
 }
 
+.category-delete-icon {
+    padding: 0 10px;
+    font-size: 12pt;
+}
+
+.task-delete-icon {
+    font-size: 10pt;
+}
+
+.delete-icon {
+    float: right;
+    color: #aaa;
+    cursor: pointer;
+    display: none;
+}
+
+.delete-icon:hover {
+    color: #990000;
+    font-weight: bold;
+}
+
 .category-name {
     margin-left: 10px;
 }
@@ -72,6 +93,10 @@ html {
     padding-top: 15px;
 }
 
+.category-list-item:hover .category-delete-icon {
+    display: block;
+}
+
 .task-list {
     padding: 15px 10px;
 }
@@ -79,6 +104,12 @@ html {
 .task-list-item {
     list-style: none;
     width: 100%;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.task-list-item:hover .task-delete-icon {
+    display: block;
 }
 
 .task-new {
@@ -90,4 +121,8 @@ html {
 .new-task-input {
     width: 100%;
     display: none;
+}
+
+.clear {
+    clear: both;
 }

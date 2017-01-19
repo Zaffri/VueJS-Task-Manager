@@ -15,15 +15,24 @@
         <ul id="category-list">
             <li v-for="(cat, index) in categories" class="category-list-item">
 
+                <div class="delete-icon category-delete-icon">X</div>
                 <h3 class="category-name">{{ cat.name }}</h3>
+
+                <div class="clear"></div>
+
                 <ul class="task-list">
                     <li class="task-list-item task-new">
-                        <p v-on:click="showTaskInput(index)">add task..</p>
+                        <p v-on:click="showTaskInput(index)">Add task..</p>
                     </li>
                     <li class="task-list-item">
                         <input type="text" v-bind:id="index" v-on:keyup.enter="createTask(index)" placeholder="new task..." class="new-task-input" />
                     </li>
-                    <li v-for="task in cat.tasks" class="task-list-item">{{ task }}</li>
+                    <li v-for="task in cat.tasks" class="task-list-item">
+                        <div class="delete-icon task-delete-icon">X</div>
+                        <p>{{ task }}</p>
+
+                        <div class="clear"></div>
+                    </li>
                 </ul>
             </li>
         </ul>
