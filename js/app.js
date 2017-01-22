@@ -9,34 +9,19 @@
 var app = new Vue({
     el: "#app",
     lastNewTaskCategory: "",
+    storageKey: "zaffri-vuejs-task-manager",
     data: {
         newCategory: '',
-        categories: [
-            {
-                name: "Cat1",
-                tasks: [
-                    "Task 1",
-                    "Task 2",
-                    "Task 3"
-                ]
-            },
-            {
-                name: "Cat2",
-                tasks: [
-                    "Task 1",
-                    "Task 2",
-                    "Task 3",
-                    "Task 4"
-                ]
-            },
-            {
-                name: "Cat3",
-                tasks: [
-                    "Task 1",
-                    "Task 2"
-                ]
-            }
-        ]
+        categories: []
+    },
+    created: function() {
+        // "created" life cycle
+        // localStorage.removeItem(this.storageKey);
+        var data = localStorage.getItem(this.storageKey);
+        
+        if(data != null && data != "") {
+            this.categories = JSON.parse(data.trim());
+        };
     },
     methods: {
         createCategory: function() {
@@ -50,6 +35,8 @@ var app = new Vue({
                 });
                 // reset new cat val
                 this.newCategory = "";
+                // update localStorage
+                this.updateAppStorage();
             }
         },
         showTaskInput: function(index) {
@@ -78,6 +65,18 @@ var app = new Vue({
             if(task.length) {
                 this.categories[category].tasks.push(task);
                 this.hideTaskInput(this.lastNewTaskCategory);
+            }
+            // update localStorage
+            this.updateAppStorage();
+        },
+        updateAppStorage: function() {
+            // Check if this.categories isn't empty
+            if(this.categories.length) {
+                // true: use setItem to save new data
+                localStorage.setItem(this.storageKey, JSON.stringify(this.categories));
+            }   else {
+                // false: use removeItem from localStorage
+                localStorage.removeItem(this.storageKey);
             }
         }
     }
