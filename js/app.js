@@ -60,20 +60,20 @@ var app = new Vue({
                 this.hideTaskInput(last);
             }
             // show new task (index = current cat index)
-            document.getElementById(index).style.display = "block";
+            document.getElementById(index + '-task-input').style.display = "block";
             // update last index
             this.lastNewTaskCategory = index;
         },
         hideTaskInput: function(last) {
             // If block display, then hide & clear
-            var input = document.getElementById(last);
+            var input = document.getElementById(last + '-task-input');
             var inputDisplay = input.style.display;
 
             if(inputDisplay == "block") input.style.display = "none";
             input.value = "";
         },
         createTask: function(category) {
-            var task = document.getElementById(category).value.trim();
+            var task = document.getElementById(category + '-task-input').value.trim();
             // add task to category.tasks array & hide input
             if(task.length) {
                 this.categories[category].tasks.push(task);

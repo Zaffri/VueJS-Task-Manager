@@ -5,11 +5,7 @@ Trello inspired task manager written in JavaScript using the VueJS framework.
 
 ### Still to do:
 * Add local-storage instead of temporary save.
-* Add delete task functionality.
-* Add delete category functionality.
+* Create modal for task/category deletetion. 
+* Task input focus open, and close on unfocus.
 * Unfocus on category create.
 * Clean up CSS.
-
-#### Possible future features (being considered)
-* Task input focus open, and close on unfocus.
-* Implement NodeJS user authentication (PassportJS).
