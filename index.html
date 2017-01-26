@@ -3,6 +3,7 @@
 <head>
     <title>Task Manager</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 <body>
 
@@ -38,7 +39,35 @@
         </ul>
     </section>
 
+    <!-- Modal markup -->
+    <div id="zaffri-modal-template" class="zaffri-modal-template">
+        <div class="zaffri-modal">
+
+            <div class="zaffri-modal-body">
+                <header><h3>{{ data.title }}</h3></header>
+
+                <section class="zaffri-modal-message">
+                    <p>{{ data.messageBody }}</p>
+                </section>
+
+                <div class="zaffri-modal-button-area">
+                    
+                    <div v-if="data.type == 'confirm'">
+                        <button v-on:click="hideModal(true)">{{ data.confirmText }}</button>
+                        <button v-on:click="hideModal(false)">{{ data.cancelText }}</button>
+                    </div>
+
+                    <div v-else>
+                        <button v-on:click="hideModal">{{ data.confirmText }}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script src="js/vue.dev.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
