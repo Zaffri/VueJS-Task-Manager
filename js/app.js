@@ -12,6 +12,14 @@ var app = new Vue({
     storageKey: "zaffri-vuejs-task-manager",
     data: {
         newCategory: '',
+        modalVisible: false,
+         zaffriModal: {
+             type: "confirm",
+             title: "Are you sure?",
+             messageBody: "This is just some example body text.",
+             confirmText: "Confirm",
+             cancelText: "Cancel" // for confirm modal type only
+         },
         categories: []
     },
     created: function() {
@@ -78,6 +86,13 @@ var app = new Vue({
                 // false: use removeItem from localStorage
                 localStorage.removeItem(this.storageKey);
             }
+        },
+        showModal: function() {
+            this.modalVisible = true;
+        },
+        hideModal: function(action) {
+            this.modalVisible = false;
+            console.log("Modal action = " + action);
         }
     }
 });
