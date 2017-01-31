@@ -13,13 +13,17 @@ var app = new Vue({
     data: {
         newCategory: '',
         modalVisible: false,
-         zaffriModal: {
-             type: "confirm",
-             title: "Are you sure?",
-             messageBody: "This is just some example body text.",
-             confirmText: "Confirm",
-             cancelText: "Cancel" // for confirm modal type only
-         },
+        zaffriModal: {
+            type: "confirm",
+            title: "Are you sure?",
+            messageBody: "This is just some example body text.",
+            confirmText: "Confirm",
+            cancelText: "Cancel", // for confirm modal type only
+            action: {
+                type: null,
+                index: 0
+            },
+        },
         categories: []
     },
     created: function() {
@@ -87,12 +91,16 @@ var app = new Vue({
                 localStorage.removeItem(this.storageKey);
             }
         },
-        showModal: function() {
+        showModal: function(index, type) {
+            // Modal action
+            this.zaffriModal.action.type = type;
+            this.zaffriModal.action.index = index;
+            // Set visible
             this.modalVisible = true;
         },
         hideModal: function(action) {
             this.modalVisible = false;
-            console.log("Modal action = " + action);
+            console.log(JSON.stringify(this.zaffriModal));
         }
     }
 });

@@ -16,7 +16,7 @@
         <ul id="category-list">
             <li v-for="(cat, index) in categories" class="category-list-item">
 
-                <div class="delete-icon category-delete-icon" v-on:click="showModal">X</div>
+                <div class="delete-icon category-delete-icon" v-on:click="showModal(index, 'category-delete')">X</div>
                 <h3 class="category-name">{{ cat.name }}</h3>
 
                 <div class="clear"></div>
