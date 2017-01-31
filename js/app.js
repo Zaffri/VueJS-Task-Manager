@@ -15,17 +15,17 @@ var app = new Vue({
         modalVisible: false,
         zaffriModal: {
             type: "confirm",
-            title: "Are you sure?",
-            messageBody: "This is just some example body text.",
+            title: "Delete",
+            messageBody: "Are you sure you want to delete this?",
             confirmText: "Confirm",
             cancelText: "Cancel", // for confirm modal type only
             action: {
                 type: null,
                 index: 0,
                 parentIndex: 0 // parentIndex for tasks (cat index)
-            },
+            }
         },
-        categories: []
+        categories: [] // all app data
     },
     created: function() {
         // "created" life cycle
@@ -53,7 +53,9 @@ var app = new Vue({
             }
         },
         deleteCategory: function(data) {
-            console.log('delete category: ' + JSON.stringify(data));
+            // remove category item
+            this.categories.splice(data.index, 1);
+            this.updateAppStorage();
         },
         showTaskInput: function(index) {
             var last = parseInt(this.lastNewTaskCategory);
@@ -86,7 +88,9 @@ var app = new Vue({
             this.updateAppStorage();
         },
         deleteTask: function(data) {
-            console.log('delete task: ' + JSON.stringify(data));
+            // remove task item
+            this.categories[data.parentIndex].tasks.splice(data.index, 1);
+            this.updateAppStorage();
         },
         updateAppStorage: function() {
             // Check if this.categories isn't empty
@@ -119,7 +123,6 @@ var app = new Vue({
                     this.deleteTask(actionData);
                 }
             }
-            //console.log(JSON.stringify(this.zaffriModal.action));
         }
     }
 });
