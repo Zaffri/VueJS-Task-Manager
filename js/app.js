@@ -21,7 +21,8 @@ var app = new Vue({
             cancelText: "Cancel", // for confirm modal type only
             action: {
                 type: null,
-                index: 0
+                index: 0,
+                parentIndex: 0 // parentIndex for tasks (cat index)
             },
         },
         categories: []
@@ -50,6 +51,9 @@ var app = new Vue({
                 // update localStorage
                 this.updateAppStorage();
             }
+        },
+        deleteCategory: function(data) {
+            console.log('delete category: ' + JSON.stringify(data));
         },
         showTaskInput: function(index) {
             var last = parseInt(this.lastNewTaskCategory);
@@ -81,6 +85,9 @@ var app = new Vue({
             // update localStorage
             this.updateAppStorage();
         },
+        deleteTask: function(data) {
+            console.log('delete task: ' + JSON.stringify(data));
+        },
         updateAppStorage: function() {
             // Check if this.categories isn't empty
             if(this.categories.length) {
@@ -91,16 +98,28 @@ var app = new Vue({
                 localStorage.removeItem(this.storageKey);
             }
         },
-        showModal: function(index, type) {
+        showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
             // Modal action
             this.zaffriModal.action.type = type;
             this.zaffriModal.action.index = index;
+            this.zaffriModal.action.parentIndex = parentIndex;
             // Set visible
             this.modalVisible = true;
         },
         hideModal: function(action) {
             this.modalVisible = false;
-            console.log(JSON.stringify(this.zaffriModal));
+            
+            // if action = true (confirm clicked)
+            if(action == true) {
+                var actionData = this.zaffriModal.action;
+                // check action type
+                if(actionData.type == "category-delete") {
+                    this.deleteCategory(actionData);
+                }   else {
+                    this.deleteTask(actionData);
+                }
+            }
+            //console.log(JSON.stringify(this.zaffriModal.action));
         }
     }
 });

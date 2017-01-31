@@ -28,8 +28,8 @@
                     <li class="task-list-item">
                         <input type="text" v-bind:id="index + '-task-input'" v-on:keyup.enter="createTask(index)" placeholder="new task..." class="new-task-input" />
                     </li>
-                    <li v-for="task in cat.tasks" class="task-list-item">
-                        <div class="delete-icon task-delete-icon">X</div>
+                    <li v-for="(task, taskIndex) in cat.tasks" class="task-list-item">
+                        <div class="delete-icon task-delete-icon" v-on:click="showModal(taskIndex, 'task-delete', index)">X</div>
                         <p>{{ task }}</p>
 
                         <div class="clear"></div>
