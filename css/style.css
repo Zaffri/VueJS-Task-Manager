@@ -123,6 +123,11 @@ html {
     display: none;
 }
 
+.task-complete {
+    color: #aaa;
+    text-decoration: line-through;
+}
+
 .clear {
     clear: both;
 }

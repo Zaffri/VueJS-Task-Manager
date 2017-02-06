@@ -78,9 +78,15 @@ var app = new Vue({
             input.value = "";
         },
         createTask: function(category) {
-            var task = document.getElementById(category + '-task-input').value.trim();
-            // add task to category.tasks array & hide input
-            if(task.length) {
+            var taskInput = document.getElementById(category + '-task-input').value.trim();
+            
+            if(taskInput.length) {
+                // add task to category.tasks array & hide input    
+                var task = {
+                    'text': taskInput,
+                    'complete' : 0  
+                };
+
                 this.categories[category].tasks.push(task);
                 this.hideTaskInput(this.lastNewTaskCategory);
             }
