@@ -98,6 +98,16 @@ var app = new Vue({
             this.categories[data.parentIndex].tasks.splice(data.index, 1);
             this.updateAppStorage();
         },
+        toggleCompletion: function(taskIndex, index, complete) {
+            // Default false
+            var updatedStatus = 0;
+            // Switch val if necessary (!= false/updatedStatus)
+            if(!complete) updatedStatus = 1;
+
+            // Update data & update local storage
+            this.categories[index].tasks[taskIndex].complete = updatedStatus;
+            this.updateAppStorage();
+        },
         updateAppStorage: function() {
             // Check if this.categories isn't empty
             if(this.categories.length) {

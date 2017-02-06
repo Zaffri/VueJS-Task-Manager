@@ -30,7 +30,10 @@
                     </li>
                     <li v-for="(task, taskIndex) in cat.tasks" class="task-list-item">
                         <div class="delete-icon task-delete-icon" v-on:click="showModal(taskIndex, 'task-delete', index)">X</div>
-                        <p v-bind:class="{'task-complete': task.complete}">{{ task.text }}</p>
+                        
+                        <p v-bind:class="{'task-complete': task.complete}" v-on:click="toggleCompletion(taskIndex, index, task.complete)">
+                            {{ task.text }}
+                        </p>
 
                         <div class="clear"></div>
                     </li>
