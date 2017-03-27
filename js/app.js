@@ -12,17 +12,36 @@ var app = new Vue({
     storageKey: "zaffri-vuejs-task-manager",
     data: {
         newCategory: '',
-        modalVisible: false,
-        zaffriModal: {
+        modalConfig: {
+            // Modal visibility
+            visible: false,
+
+            // type: notify || confirm
             type: "confirm",
+
+            // display data
             title: "Delete",
             messageBody: "Are you sure you want to delete this?",
             confirmText: "Confirm",
-            cancelText: "Cancel", // for confirm modal type only
-            action: {
+
+            // optional - for confirm modal type
+            cancelText: "Cancel",
+            callbackData: {
                 type: null,
                 index: 0,
                 parentIndex: 0 // parentIndex for tasks (cat index)
+            },
+            confirmCallback: function(action, data) {
+
+                // Check action & handle callback data
+                if(action) {
+                    if(data.type === "task-delete") 
+                        this.deleteCategory(data);
+
+                    if(data.type === "category-delete")
+                        this.deleteTask(data);
+                }
+                console.log("DATA: " + JSON.stringify(data));
             }
         },
         categories: [] // all app data
@@ -120,17 +139,17 @@ var app = new Vue({
         },
         showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
             // Modal action
-            this.zaffriModal.action.type = type;
-            this.zaffriModal.action.index = index;
-            this.zaffriModal.action.parentIndex = parentIndex;
+            this.modalConfig.callbackData.type = type;
+            this.modalConfig.callbackData.index = index;
+            this.modalConfig.callbackData.parentIndex = parentIndex;
             // Set visible
-            this.modalVisible = true;
+            this.modalConfig.visible = true;
         },
         hideModal: function(action) {
-            this.modalVisible = false;
+            // this.modalConfig.visible = false;
             
             // if action = true (confirm clicked)
-            if(action == true) {
+            /*if(action == true) {
                 var actionData = this.zaffriModal.action;
                 // check action type
                 if(actionData.type == "category-delete") {
@@ -138,7 +157,7 @@ var app = new Vue({
                 }   else {
                     this.deleteTask(actionData);
                 }
-            }
+            }*/
         }
     }
 });
