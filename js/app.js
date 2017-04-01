@@ -13,6 +13,22 @@ var app = new Vue({
     data: {
         newCategory: '',
         modalConfig: {
+             // Modal visibility
+            visible: false,
+
+            // type: notify || confirm
+            type: "confirm",
+
+            // display data
+            title: "Delete",
+            messageBody: "Are you sure you want to delete this?",
+            confirmText: "Confirm",
+
+            // Only required for confirm modal
+            cancelText: "Cancel",
+            callbackData: {}
+        },
+        /*modalConfig: {
             // Modal visibility
             visible: false,
 
@@ -43,7 +59,7 @@ var app = new Vue({
                 }
                 console.log("DATA: " + JSON.stringify(data));
             }
-        },
+        },*/
         categories: [] // all app data
     },
     created: function() {
@@ -138,16 +154,22 @@ var app = new Vue({
             }
         },
         showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
-            // Modal action
-            this.modalConfig.callbackData.type = type;
-            this.modalConfig.callbackData.index = index;
-            this.modalConfig.callbackData.parentIndex = parentIndex;
+            // Assign callback data
+            this.modalConfig.callbackData = {
+                type: type,
+                index: index,
+                parentIndex: parentIndex
+            }
+            
             // Set visible
             this.modalConfig.visible = true;
         },
-        hideModal: function(action) {
-            // this.modalConfig.visible = false;
+        modalCallback: function(action) {
+            this.modalConfig.visible = false;
             
+            console.log('Action: ' + action);
+            console.log('Data: ' + JSON.stringify(this.modalConfig.callbackData));
+
             // if action = true (confirm clicked)
             /*if(action == true) {
                 var actionData = this.zaffriModal.action;
