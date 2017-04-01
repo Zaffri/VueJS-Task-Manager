@@ -1,6 +1,6 @@
 /* --------------------------------------------------------
 	VueJS - Task Manager
-	Version: 	0.0.1
+	Version: 	0.1.0
 	Author: 	Steven Morrison
 	Website:	www.zaffri.com
 	GitHub:		github.com/Zaffri
@@ -12,18 +12,21 @@ var app = new Vue({
     storageKey: "zaffri-vuejs-task-manager",
     data: {
         newCategory: '',
-        modalVisible: false,
-        zaffriModal: {
+        modalConfig: {
+             // Modal visibility
+            visible: false,
+
+            // type: notify || confirm
             type: "confirm",
+
+            // display data
             title: "Delete",
             messageBody: "Are you sure you want to delete this?",
             confirmText: "Confirm",
-            cancelText: "Cancel", // for confirm modal type only
-            action: {
-                type: null,
-                index: 0,
-                parentIndex: 0 // parentIndex for tasks (cat index)
-            }
+
+            // Only required for confirm modal
+            cancelText: "Cancel",
+            callbackData: {}
         },
         categories: [] // all app data
     },
@@ -119,24 +122,28 @@ var app = new Vue({
             }
         },
         showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
-            // Modal action
-            this.zaffriModal.action.type = type;
-            this.zaffriModal.action.index = index;
-            this.zaffriModal.action.parentIndex = parentIndex;
-            // Set visible
-            this.modalVisible = true;
-        },
-        hideModal: function(action) {
-            this.modalVisible = false;
+            // Assign callback data
+            this.modalConfig.callbackData = {
+                type: type,
+                index: index,
+                parentIndex: parentIndex
+            }
             
+            // Set visible
+            this.modalConfig.visible = true;
+        },
+        modalCallback: function(action) {
+            // Hide modal
+            this.modalConfig.visible = false;
+
             // if action = true (confirm clicked)
             if(action == true) {
-                var actionData = this.zaffriModal.action;
+                var callbackData = this.modalConfig.callbackData;
                 // check action type
-                if(actionData.type == "category-delete") {
-                    this.deleteCategory(actionData);
+                if(callbackData.type == "category-delete") {
+                    this.deleteCategory(callbackData);
                 }   else {
-                    this.deleteTask(actionData);
+                    this.deleteTask(callbackData);
                 }
             }
         }
