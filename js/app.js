@@ -1,6 +1,6 @@
 /* --------------------------------------------------------
 	VueJS - Task Manager
-	Version: 	0.0.1
+	Version: 	0.1.0
 	Author: 	Steven Morrison
 	Website:	www.zaffri.com
 	GitHub:		github.com/Zaffri
@@ -28,38 +28,6 @@ var app = new Vue({
             cancelText: "Cancel",
             callbackData: {}
         },
-        /*modalConfig: {
-            // Modal visibility
-            visible: false,
-
-            // type: notify || confirm
-            type: "confirm",
-
-            // display data
-            title: "Delete",
-            messageBody: "Are you sure you want to delete this?",
-            confirmText: "Confirm",
-
-            // optional - for confirm modal type
-            cancelText: "Cancel",
-            callbackData: {
-                type: null,
-                index: 0,
-                parentIndex: 0 // parentIndex for tasks (cat index)
-            },
-            confirmCallback: function(action, data) {
-
-                // Check action & handle callback data
-                if(action) {
-                    if(data.type === "task-delete") 
-                        this.deleteCategory(data);
-
-                    if(data.type === "category-delete")
-                        this.deleteTask(data);
-                }
-                console.log("DATA: " + JSON.stringify(data));
-            }
-        },*/
         categories: [] // all app data
     },
     created: function() {
@@ -165,21 +133,19 @@ var app = new Vue({
             this.modalConfig.visible = true;
         },
         modalCallback: function(action) {
+            // Hide modal
             this.modalConfig.visible = false;
-            
-            console.log('Action: ' + action);
-            console.log('Data: ' + JSON.stringify(this.modalConfig.callbackData));
 
             // if action = true (confirm clicked)
-            /*if(action == true) {
-                var actionData = this.zaffriModal.action;
+            if(action == true) {
+                var callbackData = this.modalConfig.callbackData;
                 // check action type
-                if(actionData.type == "category-delete") {
-                    this.deleteCategory(actionData);
+                if(callbackData.type == "category-delete") {
+                    this.deleteCategory(callbackData);
                 }   else {
-                    this.deleteTask(actionData);
+                    this.deleteTask(callbackData);
                 }
-            }*/
+            }
         }
     }
 });
