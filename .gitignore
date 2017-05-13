@@ -1,1 +1,14 @@
+# IDE's
+.vscode
+
+# NodeJS
 node_modules
+npm-debug.log*
+
+# Webpack
+/public/js/bundle.js
+
+# DB and Logging
+*.log
+*.sql
+config/env.json

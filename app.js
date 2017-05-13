@@ -6,7 +6,6 @@
  * @author Steven Morrison <steven@zaffri.com>
  */
 
-// App configuration
 const appEnv    = require("./etc/env.json");
 const port      = process.env.PORT || appEnv.app.port;
 const express   = require("express");
