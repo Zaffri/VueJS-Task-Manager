@@ -9,7 +9,7 @@
 <body>
 
     <section id="app">
-        
+
         <div id="new-category-wrapper">
             <input type="text" v-model="newCategory" v-on:keyup.enter="createCategory" id="new-category-input" placeholder="New category" />
         </div>
@@ -46,36 +46,6 @@
         <zaffri-modal v-bind:data="modalConfig" v-on:hide_modal_emit="modalCallback"></zaffri-modal>
     </section>
 
-    <!-- Modal Component markup -->
-    <template id="zaffri-modal-template" class="zaffri-modal-template">
-        <div v-if="data.visible" class="zaffri-modal">
-
-            <div class="zaffri-modal-body">
-                <header><h3>{{ data.title }}</h3></header>
-
-                <section class="zaffri-modal-message">
-                    <p>{{ data.messageBody }}</p>
-                </section>
-
-                <div class="zaffri-modal-button-area">
-                    
-                    <div v-if="data.type == 'confirm'">
-                        <button @click="closeModal(true)">{{ data.confirmText }}</button>
-                        <button @click="closeModal(false)">{{ data.cancelText }}</button>
-                    </div>
-
-                    <div v-else>
-                        <button @click="closeModal">{{ data.confirmText }}</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </template>
-
     <script src="./js/bundle.js"></script>
-    <!--<script src="js/vue.dev.js"></script> Remove file? -->
-    <!--<script src="js/modal.js"></script>
-    <script src="js/app.js"></script>-->
 </body>
 </html>

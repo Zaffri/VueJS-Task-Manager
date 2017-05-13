@@ -1,20 +1,16 @@
+/**
+ * @name TaskManager
+ * @description VueJS task manager.
+ * @version 0.1.0
+ * @since 0.1.0
+ * @author Steven Morrison <steven@zaffri.com>
+ */
+
 import Vue from 'vue';
+import Modal from './components/Modal.vue'
 
-var ZaffriModal = Vue.component('zaffri-modal', {
-    template: "#zaffri-modal-template",
-    props: ['data'],
-    methods: {
-        closeModal: function(action = null) {
-            this.$emit('hide_modal_emit', action);
-            this.data.visible = false;
-        },
-        confirmCallback: function(action, callbackData) {
-            this.data.confirmCallback(action, callbackData);
-        }
-    }
-});
-
-const app = new Vue({
+// Main app instance
+new Vue({
     el: "#app",
     lastNewTaskCategory: "",
     storageKey: "zaffri-vuejs-task-manager",
@@ -155,5 +151,6 @@ const app = new Vue({
                 }
             }
         }
-    }
+    },
+    components: { 'ZaffriModal': Modal },
 });
