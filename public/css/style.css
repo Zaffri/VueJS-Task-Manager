@@ -1,10 +1,9 @@
-/* --------------------------------------------------------
-	VueJS - Task Manager
-	Version: 	0.1.0
-	Author: 	Steven Morrison
-	Website:	www.zaffri.com
-	GitHub:		github.com/Zaffri
--------------------------------------------------------- */
+/**
+ * @name TaskManager
+ * @description VueJS task manager.
+ * @version 0.2.0
+ * @author Steven Morrison <steven@zaffri.com>
+ */
 
 html {
 	box-sizing: border-box;
