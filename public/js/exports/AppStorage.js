@@ -61,6 +61,17 @@ const AppStorage = {
             // false: use removeItem from localStorage
             localStorage.removeItem(this.storageKey);
         }
+    },
+
+    toggleCompletion: function(taskIndex, index, complete) {
+        // Default false
+        var updatedStatus = 0;
+        // Switch val if necessary (!= false/updatedStatus)
+        if(!complete) updatedStatus = 1;
+
+        // Update data & update local storage
+        this.categories[index].tasks[taskIndex].complete = updatedStatus;
+        this.updateAppStorage();
     }
 };
 

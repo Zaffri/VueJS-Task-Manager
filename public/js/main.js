@@ -21,22 +21,15 @@ new Vue({
     data: {
         newCategory: '',
         modalConfig: {
-             // Modal visibility
             visible: false,
-
-            // type: notify || confirm
             type: "confirm",
-
-            // display data
             title: "Delete",
             messageBody: "Are you sure you want to delete this?",
             confirmText: "Confirm",
-
-            // Only required for confirm modal
             cancelText: "Cancel",
             callbackData: {}
         },
-        categories: [] // all app data
+        categories: []
     },
     created: function() {
         // "created" life cycle
@@ -49,9 +42,10 @@ new Vue({
     },
     methods: {
         createCategory: AppStorage.createCategory,
-        deleteCategory: AppStorage.deleteCategory,
         createTask: AppStorage.createTask,
+        deleteCategory: AppStorage.deleteCategory,
         deleteTask: AppStorage.deleteTask,
+        toggleCompletion: AppStorage.toggleCompletion,
         updateAppStorage: AppStorage.updateAppStorage,
         showTaskInput: function(index) {
             var last = parseInt(this.lastNewTaskCategory);
@@ -72,16 +66,6 @@ new Vue({
 
             if(inputDisplay == "block") input.style.display = "none";
             input.value = "";
-        },
-        toggleCompletion: function(taskIndex, index, complete) {
-            // Default false
-            var updatedStatus = 0;
-            // Switch val if necessary (!= false/updatedStatus)
-            if(!complete) updatedStatus = 1;
-
-            // Update data & update local storage
-            this.categories[index].tasks[taskIndex].complete = updatedStatus;
-            this.updateAppStorage();
         },
         showModal: ModalConfig.showModal,
         modalCallback: ModalConfig.modalCallback
