@@ -5,9 +5,13 @@
  * @author Steven Morrison <steven@zaffri.com>
  */
 
+// Vue and Main components
 import Vue from 'vue';
 import Modal from './components/Modal.vue';
+
+// App Exports
 import ModalConfig from './exports/ModalConfig.js';
+import AppStorage from './exports/AppStorage.js';
 
 // Main app instance
 new Vue({
@@ -44,26 +48,8 @@ new Vue({
         };
     },
     methods: {
-        createCategory: function() {
-            var input = this.newCategory.trim();
-
-            // if not default val, then add new
-            if(input.length) {
-                this.categories.push({
-                    name: input,
-                    tasks: []
-                });
-                // reset new cat val
-                this.newCategory = "";
-                // update localStorage
-                this.updateAppStorage();
-            }
-        },
-        deleteCategory: function(data) {
-            // remove category item
-            this.categories.splice(data.index, 1);
-            this.updateAppStorage();
-        },
+        createCategory: AppStorage.createCategory,
+        deleteCategory: AppStorage.deleteCategory,
         showTaskInput: function(index) {
             var last = parseInt(this.lastNewTaskCategory);
 
