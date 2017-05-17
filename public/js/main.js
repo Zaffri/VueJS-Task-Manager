@@ -50,6 +50,9 @@ new Vue({
     methods: {
         createCategory: AppStorage.createCategory,
         deleteCategory: AppStorage.deleteCategory,
+        createTask: AppStorage.createTask,
+        deleteTask: AppStorage.deleteTask,
+        updateAppStorage: AppStorage.updateAppStorage,
         showTaskInput: function(index) {
             var last = parseInt(this.lastNewTaskCategory);
 
@@ -70,27 +73,6 @@ new Vue({
             if(inputDisplay == "block") input.style.display = "none";
             input.value = "";
         },
-        createTask: function(category) {
-            var taskInput = document.getElementById(category + '-task-input').value.trim();
-            
-            if(taskInput.length) {
-                // add task to category.tasks array & hide input    
-                var task = {
-                    'text': taskInput,
-                    'complete' : 0  
-                };
-
-                this.categories[category].tasks.push(task);
-                this.hideTaskInput(this.lastNewTaskCategory);
-            }
-            // update localStorage
-            this.updateAppStorage();
-        },
-        deleteTask: function(data) {
-            // remove task item
-            this.categories[data.parentIndex].tasks.splice(data.index, 1);
-            this.updateAppStorage();
-        },
         toggleCompletion: function(taskIndex, index, complete) {
             // Default false
             var updatedStatus = 0;
@@ -100,16 +82,6 @@ new Vue({
             // Update data & update local storage
             this.categories[index].tasks[taskIndex].complete = updatedStatus;
             this.updateAppStorage();
-        },
-        updateAppStorage: function() {
-            // Check if this.categories isn't empty
-            if(this.categories.length) {
-                // true: use setItem to save new data
-                localStorage.setItem(this.storageKey, JSON.stringify(this.categories));
-            }   else {
-                // false: use removeItem from localStorage
-                localStorage.removeItem(this.storageKey);
-            }
         },
         showModal: ModalConfig.showModal,
         modalCallback: ModalConfig.modalCallback
