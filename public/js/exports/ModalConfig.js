@@ -36,4 +36,4 @@ const ModalConfig = {
     }
 };
 
-export default ModalConfig
+export default ModalConfig;

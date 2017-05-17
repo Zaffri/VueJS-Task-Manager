@@ -11,6 +11,7 @@ import Modal from './components/Modal.vue';
 
 // App Exports
 import ModalConfig from './exports/ModalConfig.js';
+import AppInput from './exports/AppInput.js';
 import AppStorage from './exports/AppStorage.js';
 
 // Main app instance
@@ -32,8 +33,7 @@ new Vue({
         categories: []
     },
     created: function() {
-        // "created" life cycle
-        // localStorage.removeItem(this.storageKey);
+        // Load app data
         var data = localStorage.getItem(this.storageKey);
         
         if(data != null && data != "") {
@@ -41,34 +41,21 @@ new Vue({
         };
     },
     methods: {
+        // AppStorage
         createCategory: AppStorage.createCategory,
         createTask: AppStorage.createTask,
         deleteCategory: AppStorage.deleteCategory,
         deleteTask: AppStorage.deleteTask,
         toggleCompletion: AppStorage.toggleCompletion,
         updateAppStorage: AppStorage.updateAppStorage,
-        showTaskInput: function(index) {
-            var last = parseInt(this.lastNewTaskCategory);
 
-            // hide last new task box
-            if(last >= 0) {
-                this.hideTaskInput(last);
-            }
-            // show new task (index = current cat index)
-            document.getElementById(index + '-task-input').style.display = "block";
-            // update last index
-            this.lastNewTaskCategory = index;
-        },
-        hideTaskInput: function(last) {
-            // If block display, then hide & clear
-            var input = document.getElementById(last + '-task-input');
-            var inputDisplay = input.style.display;
+        // AppInput
+        showTaskInput: AppInput.showTaskInput,
+        hideTaskInput: AppInput.hideTaskInput,
 
-            if(inputDisplay == "block") input.style.display = "none";
-            input.value = "";
-        },
+        // Modal Config
         showModal: ModalConfig.showModal,
         modalCallback: ModalConfig.modalCallback
     },
-    components: { 'ZaffriModal': Modal },
+    components: { 'ZaffriModal': Modal }
 });
