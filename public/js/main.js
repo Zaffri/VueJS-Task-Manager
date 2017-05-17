@@ -6,7 +6,8 @@
  */
 
 import Vue from 'vue';
-import Modal from './components/Modal.vue'
+import Modal from './components/Modal.vue';
+import ModalConfig from './exports/ModalConfig.js';
 
 // Main app instance
 new Vue({
@@ -124,32 +125,8 @@ new Vue({
                 localStorage.removeItem(this.storageKey);
             }
         },
-        showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
-            // Assign callback data
-            this.modalConfig.callbackData = {
-                type: type,
-                index: index,
-                parentIndex: parentIndex
-            }
-            
-            // Set visible
-            this.modalConfig.visible = true;
-        },
-        modalCallback: function(action) {
-            // Hide modal
-            this.modalConfig.visible = false;
-
-            // if action = true (confirm clicked)
-            if(action == true) {
-                var callbackData = this.modalConfig.callbackData;
-                // check action type
-                if(callbackData.type == "category-delete") {
-                    this.deleteCategory(callbackData);
-                }   else {
-                    this.deleteTask(callbackData);
-                }
-            }
-        }
+        showModal: ModalConfig.showModal,
+        modalCallback: ModalConfig.modalCallback
     },
     components: { 'ZaffriModal': Modal },
 });
