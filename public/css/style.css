@@ -75,6 +75,26 @@ html {
     font-weight: bold;
 }
 
+.complete-icon-wrapper {
+    float: left;
+    color: #aaa;
+    cursor: pointer;
+    min-width: 25px;
+    min-height: 10px;
+}
+
+.complete-icon-wrapper .complete-icon {
+    display: none;
+}
+
+.complete-icon-label {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    display: inline-block;
+}
+
 .category-name {
     margin-left: 10px;
 }
@@ -92,10 +112,6 @@ html {
     padding-top: 15px;
 }
 
-.category-list-item:hover .category-delete-icon {
-    display: block;
-}
-
 .task-list {
     padding: 15px 10px;
 }
@@ -109,6 +125,10 @@ html {
 
 .task-list-item:hover .task-delete-icon {
     display: block;
+}
+
+.task-list-item:hover .complete-icon-label {
+    background: #ccc;
 }
 
 .task-new {
