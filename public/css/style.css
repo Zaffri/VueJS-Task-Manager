@@ -75,6 +75,26 @@ html {
     font-weight: bold;
 }
 
+.complete-icon-wrapper {
+    float: left;
+    color: #aaa;
+    min-width: 25px;
+    min-height: 10px;
+}
+
+.complete-icon-wrapper .complete-icon {
+    display: none;
+}
+
+.complete-icon-label {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: solid 2px #ccc;
+    display: inline-block;
+}
+
 .category-name {
     margin-left: 10px;
 }
@@ -92,10 +112,6 @@ html {
     padding-top: 15px;
 }
 
-.category-list-item:hover .category-delete-icon {
-    display: block;
-}
-
 .task-list {
     padding: 15px 10px;
 }
@@ -104,11 +120,15 @@ html {
     list-style: none;
     width: 100%;
     padding-bottom: 5px;
-    cursor: pointer;
 }
 
 .task-list-item:hover .task-delete-icon {
     display: block;
+}
+
+.task-list-item:hover .complete-icon-label {
+    background: #01DF01;
+    border-color: #01DF01;
 }
 
 .task-new {
@@ -125,6 +145,11 @@ html {
 .task-complete {
     color: #aaa;
     text-decoration: line-through;
+}
+
+.task-complete-icon-label {
+    background: #04B404;
+    border-color: #04B404;
 }
 
 .clear {

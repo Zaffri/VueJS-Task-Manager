@@ -22,16 +22,28 @@
                 <div class="clear"></div>
 
                 <ul class="task-list">
+
                     <li class="task-list-item task-new">
                         <p v-on:click="showTaskInput(index)">Add task..</p>
                     </li>
+
                     <li class="task-list-item">
                         <input type="text" v-bind:id="index + '-task-input'" v-on:keyup.enter="createTask(index)" placeholder="new task..." class="new-task-input" />
                     </li>
+
                     <li v-for="(task, taskIndex) in cat.tasks" class="task-list-item">
+
+                        <div class="complete-icon-wrapper">
+                            <label for="complete-icon" v-on:click="toggleCompletion(taskIndex, index, task.complete)">
+                                <span class="complete-icon-label" v-bind:class="{'task-complete-icon-label': task.complete}"></span>
+                            </label>
+                            
+                            <input type="checkbox" name="complete-icon" class="complete-icon" />
+                        </div>
+
                         <div class="delete-icon task-delete-icon" v-on:click="showModal(taskIndex, 'task-delete', index)">X</div>
                         
-                        <p v-bind:class="{'task-complete': task.complete}" v-on:click="toggleCompletion(taskIndex, index, task.complete)">
+                        <p v-bind:class="{'task-complete': task.complete}">
                             {{ task.text }}
                         </p>
 
