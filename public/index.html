@@ -34,13 +34,16 @@
                     <li v-for="(task, taskIndex) in cat.tasks" class="task-list-item">
 
                         <div class="complete-icon-wrapper">
-                            <label for="complete-icon"><span class="complete-icon-label"></span></label>
+                            <label for="complete-icon" v-on:click="toggleCompletion(taskIndex, index, task.complete)">
+                                <span class="complete-icon-label" v-bind:class="{'task-complete-icon-label': task.complete}"></span>
+                            </label>
+                            
                             <input type="checkbox" name="complete-icon" class="complete-icon" />
                         </div>
 
                         <div class="delete-icon task-delete-icon" v-on:click="showModal(taskIndex, 'task-delete', index)">X</div>
                         
-                        <p v-bind:class="{'task-complete': task.complete}" v-on:click="toggleCompletion(taskIndex, index, task.complete)">
+                        <p v-bind:class="{'task-complete': task.complete}">
                             {{ task.text }}
                         </p>
 

@@ -78,7 +78,6 @@ html {
 .complete-icon-wrapper {
     float: left;
     color: #aaa;
-    cursor: pointer;
     min-width: 25px;
     min-height: 10px;
 }
@@ -88,10 +87,11 @@ html {
 }
 
 .complete-icon-label {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    border: solid 1px #ccc;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: solid 2px #ccc;
     display: inline-block;
 }
 
@@ -120,7 +120,6 @@ html {
     list-style: none;
     width: 100%;
     padding-bottom: 5px;
-    cursor: pointer;
 }
 
 .task-list-item:hover .task-delete-icon {
@@ -128,7 +127,8 @@ html {
 }
 
 .task-list-item:hover .complete-icon-label {
-    background: #ccc;
+    background: #01DF01;
+    border-color: #01DF01;
 }
 
 .task-new {
@@ -145,6 +145,11 @@ html {
 .task-complete {
     color: #aaa;
     text-decoration: line-through;
+}
+
+.task-complete-icon-label {
+    background: #04B404;
+    border-color: #04B404;
 }
 
 .clear {
