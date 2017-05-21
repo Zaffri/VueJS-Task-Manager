@@ -112,6 +112,10 @@ html {
     padding-top: 15px;
 }
 
+.category-list-item:hover .category-delete-icon {
+    display: block;
+ }
+
 .task-list {
     padding: 15px 10px;
 }
