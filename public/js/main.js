@@ -30,6 +30,10 @@ new Vue({
             cancelText: "Cancel",
             callbackData: {}
         },
+        editState: {
+            status: false,
+            ids: []
+        },
         categories: []
     },
     created: function() {
@@ -52,6 +56,9 @@ new Vue({
         // AppInput
         showTaskInput: AppInput.showTaskInput,
         hideTaskInput: AppInput.hideTaskInput,
+        editCatNameCheck: AppInput.editCatNameCheck,
+        setEditState: AppInput.setEditState,
+        clearEditState: AppInput.clearEditState,
 
         // Modal Config
         showModal: ModalConfig.showModal,
