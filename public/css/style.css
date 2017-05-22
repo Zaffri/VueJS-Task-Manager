@@ -159,3 +159,7 @@ html {
 .clear {
     clear: both;
 }
+
+input {
+    padding: 5px;
+}
