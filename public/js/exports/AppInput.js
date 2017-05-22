@@ -11,7 +11,6 @@ const AppInput = {
      * @desc shows task input field.
      * @param {Number|String} index
      */
-
     showTaskInput: function(index) {
         var last = parseInt(this.lastNewTaskCategory);
         // hide last new task box
@@ -28,7 +27,6 @@ const AppInput = {
      * @desc hides task input field.
      * @param {Number|String} last
      */
-
     hideTaskInput: function(last) {
         // If block display, then hide & clear
         var input = document.getElementById(last + '-task-input');
@@ -43,7 +41,6 @@ const AppInput = {
      * @param {Number} currCat - cat id
      * @return {Boolean} 
      */
-
     editCatNameCheck: function(currCat) {
         // If one id then we are editing a category
         if(this.editState.ids.length == 1 && this.editState.ids[0] == currCat) {
@@ -56,7 +53,6 @@ const AppInput = {
      * @desc updates apps editState property.
      * @param {Array} ids - defines ids which are the subject of edit.
      */
-
     setEditState: function(ids) {
         this.editState = {
             status: true, // Currently being edited
@@ -67,7 +63,6 @@ const AppInput = {
     /**
      * @desc clears app editState to default.
      */
-
     clearEditState: function() {
         this.editState = {
             status: false,

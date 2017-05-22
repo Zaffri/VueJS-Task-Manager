@@ -1,7 +1,7 @@
 /**
  * @name TaskManager
- * @description VueJS task manager.
- * @version 0.2.0
+ * @description main.js - main entry point for app.
+ * @version 1.0.1
  * @author Steven Morrison <steven@zaffri.com>
  */
 
@@ -50,6 +50,7 @@ new Vue({
         createTask: AppStorage.createTask,
         deleteCategory: AppStorage.deleteCategory,
         deleteTask: AppStorage.deleteTask,
+        editCategoryName: AppStorage.editCategoryName,
         toggleCompletion: AppStorage.toggleCompletion,
         updateAppStorage: AppStorage.updateAppStorage,
 

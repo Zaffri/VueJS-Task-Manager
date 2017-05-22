@@ -20,7 +20,7 @@
                 <h3 class="category-name">
 
                     <div v-if="editCatNameCheck(index)">
-                        <input type="text" placeholder="Edit name" v-bind:value="cat.name" />
+                        <input type="text" placeholder="Edit name" v-bind:value="cat.name" v-model="cat.name" v-on:keyup.enter="editCategoryName()" />
                     </div>
 
                     <div v-else>

@@ -1,12 +1,18 @@
 /**
  * @name TaskManager
- * @description VueJS task manager.
- * @version 0.2.0
+ * @desc ModalConfig - handles my modal actions.
+ * @version 1.0.1
  * @author Steven Morrison <steven@zaffri.com>
  */
 
 const ModalConfig = {
 
+    /**
+     * @desc initiates modal and passes stores callback data.
+     * @param {Number|String} index - categoryIndex
+     * @param {String} type - modal type
+     * @param {Number|String} parentIndex - taskIndex (optional)
+     */
     showModal: function(index, type, parentIndex = null) { // parentIndex for tasks (cat index)
         // Assign callback data
         this.modalConfig.callbackData = {
@@ -19,6 +25,10 @@ const ModalConfig = {
         this.modalConfig.visible = true;
     },
 
+    /**
+     * @desc is callback function thats called on modal close/confirm.
+     * @param {Boolean|Number|String} action - users action.
+     */
     modalCallback: function(action) {
         // Hide modal
         this.modalConfig.visible = false;
