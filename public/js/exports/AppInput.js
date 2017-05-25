@@ -38,7 +38,7 @@ const AppInput = {
 
     /**
      * @desc check if curr category is currently being edited.
-     * @param {Number} currCat - cat id
+     * @param {Number|String} currCat - cat id
      * @return {Boolean} 
      */
     editCatNameCheck: function(currCat) {
@@ -48,7 +48,13 @@ const AppInput = {
         }
         return false;
     },
-
+    
+    /**
+     * @desc check if curr task is being edited.
+     * @param {Number|String} currCat - cat id
+     * @param {Number|String} currTask - task id
+     * @return {Boolean}
+     */
     editTaskNameCheck: function(currCat, currTask) {
         // If two ids then we are editing a task
         if(this.editState.ids.length == 2) {
