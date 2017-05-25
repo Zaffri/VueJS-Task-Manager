@@ -17,7 +17,17 @@
             <li v-for="(cat, index) in categories" class="category-list-item">
 
                 <div class="delete-icon category-delete-icon" v-on:click="showModal(index, 'category-delete')">X</div>
-                <h3 class="category-name">{{ cat.name }}</h3>
+                
+                <div class="category-name-wrapper">
+
+                    <div v-if="editCatNameCheck(index)">
+                        <input class="category-name-edit-input" type="text" placeholder="Edit name" v-bind:value="cat.name" v-model="cat.name" v-on:keyup.enter="editCategoryName()" />
+                    </div>
+
+                    <div v-else>
+                        <div class="category-name" v-on:click="setEditState([index])">{{ cat.name }}</div>
+                    </div>    
+                </div>
 
                 <div class="clear"></div>
 

@@ -54,6 +54,27 @@ html {
     padding: 15px 0 15px 0;
 }
 
+.category-name-wrapper {
+    cursor: text;
+    padding: 0 10px 0 10px;
+}
+
+.category-name {
+    cursor: text;
+    padding: 3px 0 3px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.category-name:hover {
+    background: #fcfcfc;
+}
+
+.category-name-edit-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .category-delete-icon {
     padding: 0 10px;
     font-size: 12pt;
@@ -95,10 +116,6 @@ html {
     display: inline-block;
 }
 
-.category-name {
-    margin-left: 10px;
-}
-
 #category-list .category-list-item, .task-list {
     background: #fff;
     border-radius: 5px;
@@ -111,6 +128,10 @@ html {
     width: 20%;
     padding-top: 15px;
 }
+
+.category-list-item:hover .category-delete-icon {
+    display: block;
+ }
 
 .task-list {
     padding: 15px 10px;
@@ -154,4 +175,8 @@ html {
 
 .clear {
     clear: both;
+}
+
+input {
+    padding: 5px;
 }

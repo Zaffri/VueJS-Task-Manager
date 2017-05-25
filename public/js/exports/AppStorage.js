@@ -1,12 +1,15 @@
 /**
  * @name TaskManager
- * @description VueJS task manager.
- * @version 0.2.0
+ * @desc AppStorage - handles app data.
+ * @version 1.0.1
  * @author Steven Morrison <steven@zaffri.com>
  */
 
 const AppStorage = {
 
+    /**
+     * @desc creates new category.
+     */
     createCategory: function() {
         let input = this.newCategory.trim();
 
@@ -23,12 +26,29 @@ const AppStorage = {
         }
     },
 
+    /**
+     * @desc hides inputs (clears edit state) and updates localStorage. 
+     */
+    editCategoryName: function() {
+        // clear edit state & update storage
+        this.clearEditState();
+        this.updateAppStorage();
+    },
+
+    /**
+     * @desc deletes a specific category based on arr index.
+     * @param {Object} data
+     */
     deleteCategory: function(data) {
         // remove category item
         this.categories.splice(data.index, 1);
         this.updateAppStorage();
     },
 
+    /**
+     * @desc creates task for specific category.
+     * @param {Number|String} category
+     */
     createTask: function(category) {
         let taskInput = document.getElementById(category + '-task-input').value.trim();
             
@@ -46,12 +66,19 @@ const AppStorage = {
         this.updateAppStorage();
     },
     
+    /**
+     * @desc remove a specific task from a specific category.
+     * @param {Object} data
+     */
     deleteTask: function(data) {
         // remove task item
         this.categories[data.parentIndex].tasks.splice(data.index, 1);
         this.updateAppStorage();
     },
 
+    /**
+     * @desc takes current category (arr of objects) and saves it in localStorage
+     */
     updateAppStorage: function() {
         // Check if this.categories isn't empty
         if(this.categories.length) {
@@ -63,6 +90,12 @@ const AppStorage = {
         }
     },
 
+    /**
+     * @desc updates category object - toggles complete boolean
+     * @param {Number|String} taskIndex
+     * @param {Number|String} index - categoryIndex
+     * @param {Boolean|Number|String} complete
+     */
     toggleCompletion: function(taskIndex, index, complete) {
         // Default false
         var updatedStatus = 0;

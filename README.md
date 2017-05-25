@@ -28,6 +28,7 @@ node app.js
 
 ## Future changes (to do):
 * Category/Task edit.
+* On click - all edit/new input boxes hide.
 * Design overhaul.
 * Task input focus open, and close on unfocus.
 * Unfocus on category create.
