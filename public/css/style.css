@@ -70,9 +70,16 @@ html {
     background: #fcfcfc;
 }
 
+.category-name-edit-input, .task-name-edit-input {
+    box-sizing: border-box;
+}
+
 .category-name-edit-input {
     width: 100%;
-    box-sizing: border-box;
+}
+
+.task-name-edit-input {
+    width: calc(100% - 50px);
 }
 
 .category-delete-icon {
@@ -101,6 +108,7 @@ html {
     color: #aaa;
     min-width: 25px;
     min-height: 10px;
+    margin-top: 6px;
 }
 
 .complete-icon-wrapper .complete-icon {
@@ -161,6 +169,10 @@ html {
 .new-task-input {
     width: 100%;
     display: none;
+}
+
+.task-text {
+    padding-top: 6px;
 }
 
 .task-complete {
