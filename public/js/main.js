@@ -50,7 +50,7 @@ new Vue({
         createTask: AppStorage.createTask,
         deleteCategory: AppStorage.deleteCategory,
         deleteTask: AppStorage.deleteTask,
-        editCategoryName: AppStorage.editCategoryName,
+        saveAppEdits: AppStorage.saveAppEdits,
         toggleCompletion: AppStorage.toggleCompletion,
         updateAppStorage: AppStorage.updateAppStorage,
 
@@ -58,6 +58,7 @@ new Vue({
         showTaskInput: AppInput.showTaskInput,
         hideTaskInput: AppInput.hideTaskInput,
         editCatNameCheck: AppInput.editCatNameCheck,
+        editTaskNameCheck: AppInput.editTaskNameCheck,
         setEditState: AppInput.setEditState,
         clearEditState: AppInput.clearEditState,
 

@@ -49,6 +49,16 @@ const AppInput = {
         return false;
     },
 
+    editTaskNameCheck: function(currCat, currTask) {
+        // If two ids then we are editing a task
+        if(this.editState.ids.length == 2) {
+            if(this.editState.ids[0] == currCat && this.editState.ids[1] == currTask) {
+                return true;
+            }
+        }
+        return false;
+    },
+
     /**
      * @desc updates apps editState property.
      * @param {Array} ids - defines ids which are the subject of edit.
