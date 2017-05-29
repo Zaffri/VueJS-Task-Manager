@@ -29,7 +29,7 @@ const AppStorage = {
     /**
      * @desc hides inputs (clears edit state) and updates localStorage. 
      */
-    editCategoryName: function() {
+    saveAppEdits: function() {
         // clear edit state & update storage
         this.clearEditState();
         this.updateAppStorage();

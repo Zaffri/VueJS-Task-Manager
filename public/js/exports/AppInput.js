@@ -38,13 +38,29 @@ const AppInput = {
 
     /**
      * @desc check if curr category is currently being edited.
-     * @param {Number} currCat - cat id
+     * @param {Number|String} currCat - cat id
      * @return {Boolean} 
      */
     editCatNameCheck: function(currCat) {
         // If one id then we are editing a category
         if(this.editState.ids.length == 1 && this.editState.ids[0] == currCat) {
             return true;
+        }
+        return false;
+    },
+    
+    /**
+     * @desc check if curr task is being edited.
+     * @param {Number|String} currCat - cat id
+     * @param {Number|String} currTask - task id
+     * @return {Boolean}
+     */
+    editTaskNameCheck: function(currCat, currTask) {
+        // If two ids then we are editing a task
+        if(this.editState.ids.length == 2) {
+            if(this.editState.ids[0] == currCat && this.editState.ids[1] == currTask) {
+                return true;
+            }
         }
         return false;
     },
