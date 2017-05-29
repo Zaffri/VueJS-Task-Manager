@@ -96,6 +96,7 @@ html {
     color: #aaa;
     cursor: pointer;
     display: none;
+    margin-top: 6px;
 }
 
 .delete-icon:hover {
