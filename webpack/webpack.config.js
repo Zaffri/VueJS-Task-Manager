@@ -1,7 +1,7 @@
 /**
  * @name TaskManager
  * @description VueJS task manager.
- * @version 0.1.0
+ * @version 1.1.1
  * @since 0.2.0
  * @author Steven Morrison <steven@zaffri.com>
  */

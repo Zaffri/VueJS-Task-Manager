@@ -1,7 +1,7 @@
 /**
  * @name TaskManager
  * @description main.js - main entry point for app.
- * @version 1.0.1
+ * @version 1.1.1
  * @author Steven Morrison <steven@zaffri.com>
  */
 

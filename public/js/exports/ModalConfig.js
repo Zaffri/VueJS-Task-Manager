@@ -1,7 +1,7 @@
 /**
  * @name TaskManager
  * @desc ModalConfig - handles my modal actions.
- * @version 1.0.1
+ * @version 1.1.1
  * @author Steven Morrison <steven@zaffri.com>
  */
 
