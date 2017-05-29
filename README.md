@@ -1,5 +1,5 @@
 ## VueJS Task Manager
-Version 1.0.1
+Version 1.1.0
 
 Trello inspired task manager written in JavaScript using the VueJS framework. App data is stored in your browser using LocalStorage.
 
@@ -27,7 +27,6 @@ node app.js
 ```
 
 ## Future changes (to do):
-* Category/Task edit.
 * On click - all edit/new input boxes hide.
 * Design overhaul.
 * Task input focus open, and close on unfocus.
