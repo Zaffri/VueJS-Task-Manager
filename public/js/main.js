@@ -1,18 +1,13 @@
 /**
  * @name TaskManager
  * @description main.js - main entry point for app.
- * @version 1.0.1
- * @author Steven Morrison <steven@zaffri.com>
+ * @version 1.2.0
+ * @author Steven Morrison <https://github.com/Zaffri/VueJS-Task-Manager/>
  */
 
 // Vue and Main components
 import Vue from 'vue';
-import Modal from './components/Modal.vue';
-
-// App Exports
-import ModalConfig from './exports/ModalConfig.js';
-import AppInput from './exports/AppInput.js';
-import AppStorage from './exports/AppStorage.js';
+import Category from './components/Category.vue'
 
 // Main app instance
 new Vue({
@@ -21,15 +16,6 @@ new Vue({
     storageKey: "zaffri-vuejs-task-manager",
     data: {
         newCategory: '',
-        modalConfig: {
-            visible: false,
-            type: "confirm",
-            title: "Delete",
-            messageBody: "Are you sure you want to delete this?",
-            confirmText: "Confirm",
-            cancelText: "Cancel",
-            callbackData: {}
-        },
         editState: {
             status: false,
             ids: []
@@ -45,26 +31,8 @@ new Vue({
         };
     },
     methods: {
-        // AppStorage
-        createCategory: AppStorage.createCategory,
-        createTask: AppStorage.createTask,
-        deleteCategory: AppStorage.deleteCategory,
-        deleteTask: AppStorage.deleteTask,
-        saveAppEdits: AppStorage.saveAppEdits,
-        toggleCompletion: AppStorage.toggleCompletion,
-        updateAppStorage: AppStorage.updateAppStorage,
-
-        // AppInput
-        showTaskInput: AppInput.showTaskInput,
-        hideTaskInput: AppInput.hideTaskInput,
-        editCatNameCheck: AppInput.editCatNameCheck,
-        editTaskNameCheck: AppInput.editTaskNameCheck,
-        setEditState: AppInput.setEditState,
-        clearEditState: AppInput.clearEditState,
-
-        // Modal Config
-        showModal: ModalConfig.showModal,
-        modalCallback: ModalConfig.modalCallback
     },
-    components: { 'ZaffriModal': Modal }
+    components: { 
+        'Category': Category
+    }
 });

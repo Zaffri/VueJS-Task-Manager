@@ -1,8 +1,8 @@
 /**
  * @name TaskManager
  * @desc ModalConfig - handles my modal actions.
- * @version 1.0.1
- * @author Steven Morrison <steven@zaffri.com>
+ * @version 1.2.0
+ * @author Steven Morrison <https://github.com/Zaffri/VueJS-Task-Manager/>
  */
 
 const ModalConfig = {
