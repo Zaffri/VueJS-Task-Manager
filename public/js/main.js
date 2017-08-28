@@ -12,6 +12,7 @@ import Category from './components/Category.vue'
 // Main app instance
 new Vue({
     el: "#app",
+    store: require('./store/store').default,
     lastNewTaskCategory: "",
     storageKey: "zaffri-vuejs-task-manager",
     data: {
