@@ -84,6 +84,11 @@ export default {
             showModal: ModalConfig.showModal,
             modalCallback: ModalConfig.modalCallback
         },
+        computed: {
+            storageKey() { 
+                return this.$store.getters.getStorageKey;
+            }
+        },
         components: {
             'ZaffriModal': Modal
         },

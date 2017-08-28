@@ -8,13 +8,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// Modules
+import General from './modules/general';
+
 Vue.use(Vuex);
 
 let env = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
     modules: {
-        
+        General
     },
     strict: env,
 });
