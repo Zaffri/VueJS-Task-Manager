@@ -34,4 +34,4 @@ node app.js
 * Unfocus on category create.
 
 # Veux setup
-* Add action for editState.
+* Add action for newCategory.
