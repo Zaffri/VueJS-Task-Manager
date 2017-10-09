@@ -20,11 +20,15 @@ const getters = {
 }
 
 const mutations = {
-
+    updateLastNewTaskCategory(state, value) {
+        state.lastNewTaskCategory = value;
+    }
 };
 
 const actions = {
-
+    updateLastNewTaskCategory: function(context, value) {
+        context.commit('updateLastNewTaskCategory', value)
+    }
 };
 
 export default {

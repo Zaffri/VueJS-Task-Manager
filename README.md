@@ -32,3 +32,6 @@ node app.js
 * Design overhaul.
 * Task input focus open, and close on unfocus.
 * Unfocus on category create.
+
+# Veux setup
+* Add action for editState.
