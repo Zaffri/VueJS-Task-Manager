@@ -65,7 +65,7 @@ export default {
                 }
             }
         },
-        props: ['categories', 'editState', 'newCategory'],
+        props: ['categories', 'newCategory'],
         methods: {
             // AppStorage
             createCategory: AppStorage.createCategory,
@@ -86,6 +86,9 @@ export default {
         computed: {
             storageKey() { 
                 return this.$store.getters.getStorageKey;
+            },
+            editState() { 
+                return this.$store.getters.getEditState;
             }
         },
         components: {

@@ -90,11 +90,14 @@ export default {
             },
             lastNewTaskCategory() { 
                 return this.$store.getters.getLastNewTaskCategory;
+            },
+            editState() { 
+                return this.$store.getters.getEditState;
             }
         },
         components: {
             'ZaffriModal': Modal
         },
-        props: ['cat', 'index', 'editState', 'categories']
+        props: ['cat', 'index', 'categories']
 }
 </script>

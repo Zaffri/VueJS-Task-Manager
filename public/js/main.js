@@ -15,10 +15,6 @@ new Vue({
     store: require('./store/store').default,
     data: {
         newCategory: '',
-        editState: {
-            status: false,
-            ids: []
-        },
         categories: []
     },
     created: function() {

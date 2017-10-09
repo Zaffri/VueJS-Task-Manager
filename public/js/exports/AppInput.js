@@ -70,20 +70,22 @@ const AppInput = {
      * @param {Array} ids - defines ids which are the subject of edit.
      */
     setEditState: function(ids) {
-        this.editState = {
+        let state = {
             status: true, // Currently being edited
             ids: ids
         };
+        this.$store.dispatch('updateEditState', state);
     },
 
     /**
      * @desc clears app editState to default.
      */
     clearEditState: function() {
-        this.editState = {
+        let state = {
             status: false,
             ids: [] // First id is always a cat id, second is task (optional)
         };
+        this.$store.dispatch('updateEditState', state);
     }
 };
 

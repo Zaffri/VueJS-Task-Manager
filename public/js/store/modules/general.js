@@ -8,6 +8,10 @@
 const state = {
     storageKey: "zaffri-vuejs-task-manager",
     lastNewTaskCategory: "",
+    editState: {
+        status: false,
+        ids: []
+    }
 };
 
 const getters = {
@@ -16,18 +20,27 @@ const getters = {
     },
     getLastNewTaskCategory: function(state) {
         return state.lastNewTaskCategory;
+    },
+    getEditState: function(state) {
+        return state.editState;
     }
 }
 
 const mutations = {
     updateLastNewTaskCategory(state, value) {
         state.lastNewTaskCategory = value;
+    },
+    updateEditState(state, value) {
+        state.editState = value;
     }
 };
 
 const actions = {
     updateLastNewTaskCategory: function(context, value) {
         context.commit('updateLastNewTaskCategory', value)
+    },
+    updateEditState: function(context, value) {
+        context.commit('updateEditState', value)
     }
 };
 
