@@ -1,6 +1,6 @@
 /**
  * @name TaskManager
- * @description general.js - general app stire functions
+ * @description general.js - general app store functions
  * @version 1.2.0
  * @author Steven Morrison <https://github.com/Zaffri/VueJS-Task-Manager/>
  */
@@ -8,6 +8,7 @@
 const state = {
     storageKey: "zaffri-vuejs-task-manager",
     lastNewTaskCategory: "",
+    newCategory: "",
     editState: {
         status: false,
         ids: []
@@ -23,6 +24,9 @@ const getters = {
     },
     getEditState: function(state) {
         return state.editState;
+    },
+    getNewCategory: function(state) {
+        return state.newCategory;
     }
 }
 
@@ -32,6 +36,9 @@ const mutations = {
     },
     updateEditState(state, value) {
         state.editState = value;
+    },
+    updateNewCategory(state, value) {
+        state.newCategory = value;
     }
 };
 
@@ -41,6 +48,9 @@ const actions = {
     },
     updateEditState: function(context, value) {
         context.commit('updateEditState', value)
+    },
+    updateNewCategory: function(context, value) {
+        context.commit('updateNewCategory', value)
     }
 };
 

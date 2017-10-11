@@ -14,7 +14,6 @@ new Vue({
     el: "#app",
     store: require('./store/store').default,
     data: {
-        newCategory: '',
         categories: []
     },
     created: function() {
