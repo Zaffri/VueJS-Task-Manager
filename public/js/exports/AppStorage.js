@@ -11,7 +11,7 @@ const AppStorage = {
      * @desc creates new category.
      */
     createCategory: function() {
-        let input = this.newCategory.trim();
+        let input = this.newCategoryLocal.trim();
 
         // if not default val, then add new
         if(input.length) {
@@ -20,7 +20,7 @@ const AppStorage = {
                 tasks: []
             });
             // reset new cat val
-            this.newCategory = "";
+            this.newCategoryLocal = '';
             // update localStorage
             this.updateAppStorage();
         }

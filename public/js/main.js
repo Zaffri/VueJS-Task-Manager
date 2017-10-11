@@ -12,14 +12,8 @@ import Category from './components/Category.vue'
 // Main app instance
 new Vue({
     el: "#app",
-    lastNewTaskCategory: "",
-    storageKey: "zaffri-vuejs-task-manager",
+    store: require('./store/store').default,
     data: {
-        newCategory: '',
-        editState: {
-            status: false,
-            ids: []
-        },
         categories: []
     },
     created: function() {
@@ -30,7 +24,13 @@ new Vue({
             this.categories = JSON.parse(data.trim());
         };
     },
-    methods: {
+    computed: {
+        storageKey() { 
+            return this.$store.getters.getStorageKey;
+        },
+        lastNewTaskCategory() { 
+            return this.$store.getters.getLastNewTaskCategory;
+        }
     },
     components: { 
         'Category': Category

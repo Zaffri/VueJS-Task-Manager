@@ -2,7 +2,7 @@
     <div>
 
         <div id="new-category-wrapper">
-            <input type="text" v-model="newCategory" v-on:keyup.enter="createCategory" id="new-category-input" placeholder="New category" />
+            <input type="text" v-model="newCategoryLocal" v-on:keyup.enter="createCategory" id="new-category-input" placeholder="New category" />
         </div>
 
         <ul id="category-list">
@@ -61,11 +61,12 @@ export default {
                     messageBody: "Are you sure you want to delete this?",
                     confirmText: "Confirm",
                     cancelText: "Cancel",
-                    callbackData: {}
-                }
+                    callbackData: {},
+                },
+                newCategoryLocal: ""
             }
         },
-        props: ['categories', 'editState', 'newCategory'],
+        props: ['categories'],
         methods: {
             // AppStorage
             createCategory: AppStorage.createCategory,
@@ -82,6 +83,23 @@ export default {
             // Modal config
             showModal: ModalConfig.showModal,
             modalCallback: ModalConfig.modalCallback
+        },
+        computed: {
+            storageKey() { 
+                return this.$store.getters.getStorageKey;
+            },
+            editState() { 
+                return this.$store.getters.getEditState;
+            },
+            newCategory() { 
+                return this.$store.getters.getNewCategory;
+            }
+        },
+        watch: {
+            newCategoryLocal: function (val) {
+                // When local changes update store
+                this.$store.dispatch('updateNewCategory', val);
+            }
         },
         components: {
             'ZaffriModal': Modal,

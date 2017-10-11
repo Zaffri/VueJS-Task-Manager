@@ -26,8 +26,7 @@ webpack
 node app.js
 ```
 
-## Future changes (to do):
-* Restructure app and implement Vuex for state management.
+## Possible Future Additions:
 * On click - all edit/new input boxes hide.
 * Design overhaul.
 * Task input focus open, and close on unfocus.

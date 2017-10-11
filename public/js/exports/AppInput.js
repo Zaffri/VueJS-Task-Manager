@@ -11,8 +11,8 @@ const AppInput = {
      * @desc shows task input field.
      * @param {Number|String} index
      */
-    showTaskInput: function(index) {
-        var last = parseInt(this.lastNewTaskCategory);
+    showTaskInput: function(index, lastNewTaskCategory) {
+        var last = parseInt(lastNewTaskCategory);
         // hide last new task box
         if(last >= 0) {
             this.hideTaskInput(last);
@@ -20,7 +20,7 @@ const AppInput = {
         // show new task (index = current cat index)
         document.getElementById(index + '-task-input').style.display = "block";
         // update last index
-        this.lastNewTaskCategory = index;
+        this.$store.dispatch('updateLastNewTaskCategory', index);
     },
 
     /**
@@ -70,20 +70,22 @@ const AppInput = {
      * @param {Array} ids - defines ids which are the subject of edit.
      */
     setEditState: function(ids) {
-        this.editState = {
+        let state = {
             status: true, // Currently being edited
             ids: ids
         };
+        this.$store.dispatch('updateEditState', state);
     },
 
     /**
      * @desc clears app editState to default.
      */
     clearEditState: function() {
-        this.editState = {
+        let state = {
             status: false,
             ids: [] // First id is always a cat id, second is task (optional)
         };
+        this.$store.dispatch('updateEditState', state);
     }
 };
 

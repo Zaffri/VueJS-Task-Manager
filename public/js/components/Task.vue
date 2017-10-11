@@ -3,7 +3,7 @@
 
         <!-- Task create -->
         <li class="task-list-item task-new">
-            <p v-on:click="showTaskInput(index)">Add task..</p>
+            <p v-on:click="showTaskInput(index, lastNewTaskCategory)">Add task..</p>
         </li>
 
         <li class="task-list-item">
@@ -84,9 +84,20 @@ export default {
             showModal: ModalConfig.showModal,
             modalCallback: ModalConfig.modalCallback
         },
+        computed: {
+            storageKey() { 
+                return this.$store.getters.getStorageKey;
+            },
+            lastNewTaskCategory() { 
+                return this.$store.getters.getLastNewTaskCategory;
+            },
+            editState() { 
+                return this.$store.getters.getEditState;
+            }
+        },
         components: {
             'ZaffriModal': Modal
         },
-        props: ['cat', 'index', 'editState', 'categories']
+        props: ['cat', 'index', 'categories']
 }
 </script>
